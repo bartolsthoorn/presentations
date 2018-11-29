@@ -1,0 +1,427 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <script src="../head.min.js"></script>
+    <link rel="stylesheet" href="../reveal.js-3.7.0/css/reveal.css">
+    <link rel="stylesheet" href="../reveal.js-3.7.0/css/theme/white.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
+  <style type="text/css">
+    body {
+        /*font-family: "Computer Modern Sans", serif;*/
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+          line-height: 1.4;
+          font-weight: 300;
+    }
+    .reveal .flag {
+        display: inline-block;
+        border: none;
+        box-shadow: none;
+        height: 0.9em;
+        margin: 0;
+        margin-left: 8px;
+    }
+    .reveal h2.title {
+      margin-bottom: 0.5em;
+    }
+    .reveal h1,.reveal h2, .reveal h3, .reveal h4 {
+        text-transform: none;
+        font-weight: 500;
+        line-height: 1.2;
+      /*font-family: "Computer Modern Sans", serif;
+      font-weight: bold;*/
+    }
+    .reveal h2 {
+      font-size: 32pt;
+    }
+    .reveal h3 {
+      font-size: 20pt;
+    }
+    .reveal h4 { /* plot titles */
+      font-size: 20pt;
+      margin-bottom: 0pt;
+        font-weight: normal;
+    }
+    .reveal p {
+      font-size: 18pt;
+    }
+    ul#omdb {
+      font-size: 18pt;
+    }
+    ul#places {
+      font-size: 12pt;
+      list-style: none;
+      margin-left: 0px;
+        margin-top: 0em;
+          margin-bottom: 2em;
+    }
+    table#logos img {
+      max-height: 100pt;
+      border: none;
+      box-shadow: none;
+    }
+    .reveal p a {
+      font-family: "Computer Modern Typewriter", sans-serif;
+      color: black;
+    }
+    span.typewriter {
+      font-family: "Computer Modern Typewriter", sans-serif;
+    }
+    div.video { width: 100%; }
+    .reveal section img.animation {
+      border: none;
+      box-shadow: none;
+      margin-bottom: 0pt;
+      margin-top: 0pt;
+    }
+    div.slide-right {
+      left:31.25%;
+      top: 75px;
+      float: right;
+      text-align: left;
+      z-index:-10;
+      width:50%;
+    }
+    div.center {
+      text-align: center;
+    }
+    .reveal section .footer {
+      font-size: 10pt;
+      text-align: left;
+      clear: both;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .reveal section .footer-large {
+        width: 90%;
+    }
+    p.caption {
+      font-size: 12pt;
+        margin: 0px;
+    }
+    table.smaller {
+      border: none;
+      border-collapse: collapse;
+      margin-bottom: 10pt;
+    }
+    table.smaller p.caption {
+      font-size: 11pt;
+    }
+    table.smaller td {
+      padding: 0px;
+      padding-right: 10pt;
+      padding-left: 10pt;
+        border: none;
+    }
+    .reveal p.nomargin { margin: 0; }
+    .reveal h3.nomargin { margin: 0; }
+    p.smaller { font-size: 14pt; }
+    div.clear { clear: both; }
+    hr {
+      margin-bottom: 10pt;
+      margin-top: 10pt;
+    }
+    .reveal img {
+      border: none;
+      box-shadow: none;
+    }
+    span.mm {
+      font-family: "Computer Modern Typewriter", sans-serif;
+    }
+    svg#clustering {
+        /*border: 1px solid black;*/
+        padding-top: 6px;
+        overflow: visible;
+    }
+    svg#clustering line {
+        stroke:rgb(0,0,0);
+        stroke-width:1;
+    }
+    svg#clustering div.video {
+        background: white;
+        box-sizing: border-box;
+        border: 1px solid black;
+        padding-top: 20;
+        padding-bottom: 20;
+    }
+    svg#clustering img {
+      border: none;
+      box-shadow: none;
+    }
+    .reveal .screenshot {
+      border: none;
+      /*box-shadow: none;*/
+    }
+    .reveal .noborder img {
+      border: none;
+        box-shadow: none;
+    }
+    .reveal div.grid1 {
+      display: grid;
+      grid-template-columns: 40%; 60%;
+      grid-gap: 1.0em;
+    }
+    .reveal div.grid2 {
+      display: grid;
+      grid-template-columns: 55%; 45%;
+      grid-gap: 1.0em;
+    }
+    .reveal div.grid1 div.grid, .reveal div.grid2 div.grid {
+      display: grid;
+      grid-template-columns: 50%; 50%;
+    }
+    .reveal table {
+      font-size: .38em;
+    }
+    .reveal section a {
+      color: #6ca0e8 !IMPORTANT;
+    }
+  </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2 class="title">Band gap prediction for large organic crystal structures with machine learning</h2>
+          <table id="logos">
+            <tr>
+              <td><img src="images/logo-omdb.png"></td>
+            </tr>
+          </table>
+          <p><u><strong>Bart Olsthoorn</strong></u><sup>1</sup>, Matthias Geilhufe<sup>1</sup>, Stanislav Borysov<sup>2</sup>, Alexander Balatsky<sup>1</sup></p>
+          <ul id="places">
+            <li><sup>1</sup> Nordita, KTH Royal Institute of Technology and Stockholm University, Sweden<img src="images/flags/se.png" class="flag flag-se" alt="Sweden" /> </li>
+            <li><sup>2</sup> DTU Technical University of Denmark, Denmark <img src="images/flags/dk.png" class="flag flag-dk" alt="Denmark" /></li>
+          </ul>
+          <p class="center">
+            <!--<a href="https://omdb.diracmaterials.org">https://omdb.diracmaterials.org</a></br>-->
+            <!--<a href="http://diracmaterials.org">https://diracmaterials.org</a>-->
+          </p>
+        </section>
+        <section>
+          <img src="images/screenshots/1.png" class="screenshot">
+        </section>
+        <section>
+          <img src="images/screenshots/1.png" class="screenshot" style="filter: brightness(90%); filter: grayscale(0.5); filter: blur(1.4px); opacity: 0.2">
+          <div style="position: absolute; top: 0; width: 100%; margin-top: 12%">
+            <ul style="margin-bottom: 1em; list-style: none; line-height: 2em;">
+              <li>Free to use: <a href="https://omdb.diracmaterials.org">omdb.diracmaterials.org</a></li>
+              <li>VASP, PBE</li>
+              <li>~25,000 materials</li>
+              <li>Advanced data mining tools</li>
+            </ul>
+            <div class="footer">S.S. Borysov, R.M. Geilhufe, A.V. Balatsky PloS one, 12:2, e0171501, 2017</div>
+          </div>
+        </section>
+        <section class="noborder">
+          <h3><strong>OMDB-GAP1</strong>: A new dataset for machine learning</h3>
+          <div class="grid1">
+            <div class="box" style="grid-column: 1;">
+              <img src="images/ml/bandgap_histogram.png" style="width: 80%">
+              <div class="grid">
+                <img src="images/ml/species_count.png" style="grid-column: 1">
+                <img src="images/ml/spacegroups_count.png" style="grid-column: 2">
+              </div>
+            </div>
+            <div class="box" style="grid-column: 2;">
+              <table>
+                <tr>
+                  <th>Name</th>
+                  <th>Size</th>
+                  <th>Type</th>
+                  <th>N</th>
+                  <th>Consistent</th>
+                </tr>
+                <tr>
+                  <td>QM9</td>
+                  <td>133,885</td>
+                  <td>Organic molecules</td>
+                  <td>18</td>
+                  <td>✔</td>
+                </tr>
+                <tr>
+                  <td>Materials Project</td>
+                  <td>53,340</td>
+                  <td>Crystals</td>
+                  <td>27</td>
+                  <td>✖</td>
+                </tr>
+                <tr>
+                  <td><strong>OMDB-GAP1</strong></td>
+                  <td>12,500</td>
+                  <td>Organic crystals</td>
+                  <td>85</td>
+                  <td>✔</td>
+                </tr>
+              </table>
+              <div style="text-align: left; margin-top: 1em">
+                <p>Organic crystals spanning 65 elements and 67 space groups.</p>
+                <p>Download: <a href="https://omdb.diracmaterials.org/dataset">omdb.diracmaterials.org/dataset</a></p>
+                <p style="text-align: right; margin-top: 2em; font-size: 10pt;">arXiv:1810.12814</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3><strong>OMDB-GAP1</strong>: A benchmark</h3>
+          <div class="grid2 noborder">
+            <div style="grid-column: 1">
+              <img src="images/ml/best_benchmark.png">
+              <table>
+                <tr>
+                  <th>Name</th>
+                  <th>MAE (eV)</th>
+                </tr>
+                <tr>
+                  <td>SOAP+KRR</td>
+                  <td>0.418</td>
+                </tr>
+                <tr>
+                  <td>SchNet</td>
+                  <td>0.378</td>
+                </tr>
+                <tr>
+                  <td>SOAP/SchNet ensemble</td>
+                  <td><strong>0.361</strong></td>
+                </tr>
+              </table>
+            </div>
+            <div style="grid-column: 2">
+              <div class="grid">
+                <img src="images/ml/soap_predictions_alpha.png" style="grid-column: 1">
+                <img src="images/ml/schnet_predictions_alpha.png" style="grid-column: 2">
+                <div style="grid-column: 1 / span 2; grid-row: 2; text-align: center;">
+                  <img src="images/ml/ensemble_predictions_alpha.png" style="width: 50%">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+            <h3>Structural similarity and band gap</h3>
+            <!-- 180 frames -->
+            <!-- 210 frames, 800x600 -->
+            <!--  ~/Downloads/ffmpeg-git-20180806-64bit-static/ffmpeg -f image2 -i 7111437_frame_%03d.png -pix_fmt yuv420p -c:v libx264 animation.mp4 -->
+            <!--<rect x="0" y="0" width="300" height="200"></rect>-->
+
+            <!-- <image xlink:href="tSNE_kernels_omdb1-n8-l6-c4_0-g0_5_fastavg-50.png" x="0" y="0" width="100%" height="70%"/> -->
+            <svg version="1.1" class="center-block" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="960" height="400" id="clustering">
+                <g>
+                <g><!-- transform="translate(0,0) scale(1,1)">-->
+                        <foreignObject x="0" y="0" width="100%" height="100%">
+                            <img src="tSNE_kernels_omdb1-n8-l6-c4_0-g0_5_fastavg-50_2.png" height="100%" style="margin: 0; padding: 0;">
+                        </foreignObject>
+                        <!-- 480 is center of image -->
+                        <line x1="340" y1="83" x2="150" y2="75" style="" />
+                        <line x1="344" y1="83" x2="310" y2="75" style="" />
+
+                        <line x1="330" y1="187" x2="150" y2="275" style="" />
+                        <line x1="339" y1="197" x2="310" y2="275" style="" />
+
+                        <line x1="618" y1="153" x2="650" y2="75" style="" />
+                        <line x1="617" y1="168" x2="810" y2="75" style="" />
+
+                        <line x1="524" y1="176" x2="650" y2="275" style="" />
+                        <line x1="525" y1="174" x2="810" y2="275" style="" />
+
+                        <!-- Left -->
+                        <text x="155" y="-4" text-anchor="middle" font-family="sans-serif" font-size="14px" fill="black">Chemical hydrogen storage</text>
+                        <foreignObject x="0" y="0" class="video-object" width="150" height="150">
+                            <div class="video">
+                                <video width="100%" autoplay="autoplay" loop>
+                                    <source src="4123179.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </foreignObject>
+                        <foreignObject x="160" y="0" class="video-object" width="150" height="150">
+                            <div class="video">
+                                <video width="100%" autoplay="autoplay" loop>
+                                    <source src="2221937.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </foreignObject>
+
+                        <text x="155" y="196" text-anchor="middle" font-family="sans-serif" font-size="14px" fill="black">Boron-containing clusters</text>
+                        <foreignObject x="0" y="200" class="video-object" width="150" height="150">
+                            <div class="video">
+                                <video width="100%" autoplay="autoplay" loop>
+                                    <source src="1503887.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </foreignObject>
+                        <foreignObject x="160" y="200" class="video-object" width="150" height="150">
+                            <div class="video">
+                                <video width="100%" autoplay="autoplay" loop>
+                                    <source src="7111129.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </foreignObject>
+
+                        <!-- Right -->
+                        <text x="805" y="-4" text-anchor="middle" font-family="sans-serif" font-size="14px" fill="black">Molecular crystals</text>
+                        <foreignObject x="810" y="0" class="video-object" width="150" height="150">
+                            <div class="video">
+                                <video width="100%" autoplay="autoplay" loop>
+                                    <source src="7154450.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </foreignObject>
+                        <foreignObject x="650" y="0" class="video-object" width="150" height="150">
+                            <div class="video">
+                                <video width="100%" autoplay="autoplay" loop>
+                                    <source src="7000581.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </foreignObject>
+
+                        <text x="805" y="196" text-anchor="middle" font-family="sans-serif" font-size="14px" fill="black">Organic metals</text>
+                        <foreignObject x="650" y="200" class="video-object" width="150" height="150">
+                            <div class="video">
+                                <video width="100%" autoplay="autoplay" loop>
+                                    <source src="4325014.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </foreignObject>
+                        <foreignObject x="810" y="200" class="video-object" width="150" height="150">
+                            <div class="video">
+                                <video width="100%" autoplay="autoplay" loop>
+                                    <source src="7111437.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </foreignObject>
+                    </g>
+                </g>
+            </svg>
+            <script>
+                var vids = document.getElementsByTagName("video");
+                for (i = 0; i < vids.length; i++) {
+                    vids[i].playbackRate = 0.6;
+                }
+            </script>
+            <p class="smaller center">
+            Interactive version:<br><a href="https://omdb.diracmaterials.org/dataset/OMDB1/interactive">https://omdb.diracmaterials.org/dataset/OMDB1/interactive</a>
+            </p>
+        </section>
+        <section>
+          <p>A new platform for machine learning: <a href="https://omdb.diracmaterials.org">omdb.diracmaterials.org</a></p>
+          <p style="margin-top: 2.0em">Thank you!</p>
+          <p><a href="mailto:bartol@kth.se">bartol@kth.se</a></p>
+        </section>
+      </div>
+    </div>
+    <script src="../reveal.js-3.7.0/js/reveal.js"></script>
+    <script>
+    Reveal.initialize({
+      controls: false,
+      transition: 'none',
+      slideNumber: true,
+      math: {
+        mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js',
+        config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+      },
+      dependencies: [
+            { src: '../reveal.js-3.7.0/plugin/math/math.js', async: true }
+      ]
+    });
+    </script>
+  </body>
+</html>
