@@ -192,7 +192,7 @@
               <td><img src="images/logo-omdb.png"></td>
             </tr>
           </table>
-          <p><u><strong>Bart Olsthoorn</strong></u><sup>1</sup>, Matthias Geilhufe<sup>1</sup>, Stanislav Borysov<sup>2</sup>, Alexander Balatsky<sup>1</sup></p>
+          <p><u><strong>Bart Olsthoorn</strong></u><sup>1</sup>, R. Matthias Geilhufe<sup>1</sup>, Stanislav S. Borysov<sup>2</sup>, Alexander V. Balatsky<sup>1</sup></p>
           <ul id="places">
             <li><sup>1</sup> Nordita, KTH Royal Institute of Technology and Stockholm University, Sweden<img src="images/flags/se.png" class="flag flag-se" alt="Sweden" /> </li>
             <li><sup>2</sup> DTU Technical University of Denmark, Denmark <img src="images/flags/dk.png" class="flag flag-dk" alt="Denmark" /></li>
@@ -200,6 +200,7 @@
           <p class="center">
             <!--<a href="https://omdb.diracmaterials.org">https://omdb.diracmaterials.org</a></br>-->
             <!--<a href="http://diracmaterials.org">https://diracmaterials.org</a>-->
+            arXiv:1810.12814
           </p>
         </section>
         <section>
@@ -276,6 +277,28 @@
             <div style="text-align: left">
               <p>Download: <a href="https://omdb.diracmaterials.org/dataset">omdb.diracmaterials.org/dataset</a></p>
               <p style="text-align: right; margin-top: 2em; font-size: 10pt;">arXiv:1810.12814</p>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3>Models and complexity</h3>
+          <div class="grid3 noborder">
+            <div style="grid-column: 1">
+              <h4><strong>Density functional theory (DFT)</strong></h4>
+              <img src="images/vasp.png" style="width: 40%">
+              <div style="text-align: left;">
+                <p>Computational demand:</p>
+                <p>O(N<sup>2</sup><sub>atoms</sub>log(N<sub>atoms</sub>)) to O(N<sup>3</sup><sub>atoms</sub>)</p>
+                <p>Around 60 core hours per material<br>
+                → 750k core hours for entire dataset</p>
+              </div>
+            </div>
+            <div style="grid-column: 2">
+              <h4><strong>Machine learning</strong></h4>
+              <p>SOAP+KRR &mdash; O(N<sub>train</sub>)</p>
+              <img src="images/SOAP.png" style="width: 50%">
+              <p>SchNet &mdash; O(N<sub>atoms</sub>)</p>
+              <img src="images/schnet.png" style="width: 50%">
             </div>
           </div>
         </section>
@@ -416,13 +439,27 @@
                 }
             </script>
             <p class="smaller center">
-            Interactive version:<br><a href="https://omdb.diracmaterials.org/dataset/OMDB1/interactive">https://omdb.diracmaterials.org/dataset/OMDB1/interactive</a>
+            Interactive version:<br><a href="https://omdb.diracmaterials.org/dataset/OMDB1/interactive">https://omdb.diracmaterials.org/dataset/OMDB1/interactive</a> (arXiv:1810.12814)
             </p>
         </section>
         <section>
           <p>A new platform for machine learning: <a href="https://omdb.diracmaterials.org">omdb.diracmaterials.org</a></p>
           <p style="margin-top: 2.0em">Thank you!</p>
           <p><a href="mailto:bartol@kth.se">bartol@kth.se</a></p>
+
+          <p><a href="https://arxiv.org/abs/1810.12814">arXiv:1810.12814</a></p>
+          <div class="noborder" style="width: 50%; margin: 0 auto">
+            <div style="display: grid; grid-template-columns: 25% 25% 25% 25%; grid-gap: .2em;">
+              <img src="images/bart.olsthoorn.png" style="grid-column: 1;">
+              <img src="images/matthias.geilhufe.png" style="grid-column: 2;">
+              <img src="images/stanislav.borysov.png" style="grid-column: 3">
+              <img src="images/alexander.balatsky.png" style="grid-column: 4">
+              <div style="grid-column: 1; grid-row: 2; font-size: .25em;">Bart Olsthoorn</div>
+              <div style="grid-column: 2; grid-row: 2; font-size: .25em;">R. Matthias Geilhufe</div>
+              <div style="grid-column: 3; grid-row: 2; font-size: .25em;">Stanislav S. Borysov</div>
+              <div style="grid-column: 4; grid-row: 2; font-size: .25em;">Alexander V. Balatsky</div>
+            </div>
+          </div>
         </section>
       </div>
     </div>
